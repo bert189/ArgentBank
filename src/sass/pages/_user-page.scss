@@ -1,0 +1,30 @@
+
+.user-page {    
+
+    & .welcome {
+        text-align: center;
+        padding: $user-page-small-spacing 0 $user-page-medium-spacing;
+        
+        & h1 {            
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: $user-page-small-spacing;
+        }
+
+        & span {
+            display: block;
+        }
+
+        & .green-button {
+            font-size: 13px;
+        }
+    }
+
+    & .accounts {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+}
+

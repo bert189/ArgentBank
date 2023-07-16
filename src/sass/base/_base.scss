@@ -1,0 +1,17 @@
+
+html {
+    color: $text-color-blue;
+}
+
+a {
+    all: unset;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+main {
+    min-height: calc( 100vh - $header-height - $footer-height );
+    background-color: $backgroud-indigo;
+}

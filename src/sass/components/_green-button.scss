@@ -1,0 +1,11 @@
+
+.green-button {
+    background-color: $button-lightgreen;
+    border: $button-border-size outset $button-lightgreen;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-align: center;
+}

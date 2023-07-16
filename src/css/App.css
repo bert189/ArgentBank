@@ -1,0 +1,259 @@
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+html {
+  color: #2c3e50;
+}
+
+a {
+  all: unset;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+main {
+  min-height: calc(100vh - 64px - 76px);
+  background-color: #12002b;
+}
+
+html {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.user-sign-in-out .sign-in {
+  cursor: pointer;
+}
+.user-sign-in-out .sign-out {
+  cursor: pointer;
+}
+
+.sign-in-form {
+  background-color: white;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+}
+.sign-in-form h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+.sign-in-form form {
+  width: 100%;
+}
+.sign-in-form form .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.sign-in-form form .input-wrapper label {
+  font-size: 16px;
+  font-weight: 700;
+}
+.sign-in-form form .input-wrapper input {
+  padding: 5px;
+  font-size: 19px;
+}
+.sign-in-form form .input-remember {
+  margin-bottom: 12px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+.sign-in-form form .input-remember label {
+  margin-left: 8px;
+}
+.sign-in-form form .green-button {
+  width: calc(100% - 32px - 4px);
+}
+
+.hero {
+  position: relative;
+}
+.hero img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 0 33%;
+}
+.hero__content {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  background-color: white;
+  width: 364px;
+  margin: 32px;
+  padding: 32px;
+}
+.hero__subtitle {
+  font-size: 24px;
+  font-weight: 700;
+}
+.hero__text {
+  font-size: 19px;
+  margin-top: 25px;
+}
+
+.feature-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+.feature-item__icon {
+  width: 150px;
+  border: 10px solid #00bc77;
+  border-radius: 50%;
+  padding: 16px;
+}
+.feature-item__title {
+  margin: 20px 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+}
+.feature-item__text {
+  text-align: center;
+  margin: 8px 0 16px;
+}
+
+.green-button {
+  background-color: #00bc77;
+  border: 2px outset #00bc77;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 8px 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.account {
+  background-color: white;
+  width: 100%;
+  position: relative;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.account__amount {
+  font-size: 40px;
+  font-weight: 700;
+}
+.account .green-button {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 200px;
+}
+
+.header {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo {
+  transform: scale(0.43);
+  position: relative;
+  left: -110px;
+}
+.header .user-sign-in-out {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-right: 30px;
+}
+.header .user-sign-in-out i {
+  margin-right: 5px;
+}
+.footer {
+  height: 76px;
+  text-align: center;
+  padding: 32px 0 24px;
+  border-top: 2px solid #ccc;
+}
+.home-page {
+  background-color: white;
+}
+.home-page .features {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-in-page {
+  padding: 48px;
+}
+
+.user-page .welcome {
+  text-align: center;
+  padding: 22px 0 32px;
+}
+.user-page .welcome h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 22px;
+}
+.user-page .welcome span {
+  display: block;
+}
+.user-page .welcome .green-button {
+  font-size: 13px;
+}
+.user-page .accounts {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=App.css.map */

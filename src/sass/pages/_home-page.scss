@@ -1,0 +1,10 @@
+
+.home-page {
+    
+    background-color:  white;
+    
+    & .features {
+        display: flex;
+        justify-content: space-between;
+    }
+}

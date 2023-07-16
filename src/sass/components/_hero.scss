@@ -1,0 +1,31 @@
+
+.hero {
+    position: relative;
+
+    & img {
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+        object-position: 0 33%;
+    }
+
+    &__content {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        background-color: white;
+        width: 364px;
+        margin: 32px;
+        padding: 32px;
+    }
+
+    &__subtitle {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    &__text {
+        font-size: 19px;
+        margin-top: 25px;
+    }
+}

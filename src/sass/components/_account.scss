@@ -1,0 +1,28 @@
+
+.account {
+    background-color: white;
+    width: 100%;
+    position: relative;
+    padding: $account-padding;
+    margin-bottom: $user-page-medium-spacing;
+
+    &__title {
+
+    }
+
+    &__amount {
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    &__description {
+
+    }
+
+    & .green-button {
+        position: absolute;
+        bottom: $account-padding;
+        right: $account-padding;
+        width: 200px;
+    }
+}
