@@ -6,5 +6,9 @@
     & .features {
         display: flex;
         justify-content: space-between;
+
+        @include phone-portrait {
+            flex-direction: column;
+        }
     }
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 
-function GreenButton({text}) {
-  return (
-    <button className="green-button">
-      {text}
-    </button>
-  )
+function GreenButton({ text, onClick }) {
+	return (
+		<button className="green-button" onClick={onClick} >
+			{text}
+		</button>
+	)
 }
 
 export default GreenButton

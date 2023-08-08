@@ -1,13 +1,14 @@
-import React from 'react'
-import GreenButton from '../components/GreenButton'
+import React, { useState } from 'react'
 import Account from '../components/Account'
+import UserNameEditor from '../components/UserNameEditor'
+// import { useParams } from 'react-router-dom';
+
 
 function UserPage() {
 
-    const user = {
-        firstName : "Tony",
-        lastName : "Jarvis"
-    }
+    // const currentLocation = useParams();
+    // const userId = currentLocation.id;
+
     const accounts = [
         {
             title : "Argent Bank Checking (x8349)",
@@ -24,18 +25,12 @@ function UserPage() {
             amount : "184.30",
             description : "Current Balance"
         }
-    ]
+    ];
+
 
     return (
         <main className='user-page'>
-            <section className='welcome'>
-                <h1>
-                    Welcome back
-                    <span>{user.firstName}&nbsp;{user.lastName}&nbsp;!</span>
-                </h1>
-                <GreenButton text="Edit Name"/>
-            </section>
-      
+            <UserNameEditor />
             <section className='accounts'>
                 {accounts && accounts.map((account, index) =>
                     <Account key={index} account={account} />

@@ -24,5 +24,11 @@
         bottom: $account-padding;
         right: $account-padding;
         width: 200px;
+
+        @include phone-portrait {
+            position: static;
+            margin-top: 15px;
+            width: 100%;
+        }
     }
 }

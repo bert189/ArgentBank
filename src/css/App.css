@@ -75,7 +75,7 @@ html {
 
 .sign-in-form {
   background-color: white;
-  width: 300px;
+  max-width: 300px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -125,14 +125,38 @@ html {
   object-fit: cover;
   object-position: 0 33%;
 }
-.hero__content {
+@media screen and (max-width: 575px) {
+  .hero img {
+    height: 300px;
+  }
+}
+.hero .content-wrapper {
   position: absolute;
   top: 50px;
   right: 50px;
+}
+@media screen and (max-width: 575px) {
+  .hero .content-wrapper {
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.hero__content {
   background-color: white;
   width: 364px;
   margin: 32px;
   padding: 32px;
+}
+@media screen and (max-width: 575px) {
+  .hero__content {
+    transform: scale(0.75);
+    margin: 0 auto;
+  }
 }
 .hero__subtitle {
   font-size: 24px;
@@ -196,6 +220,13 @@ html {
   right: 24px;
   width: 200px;
 }
+@media screen and (max-width: 575px) {
+  .account .green-button {
+    position: static;
+    margin-top: 15px;
+    width: 100%;
+  }
+}
 
 .header {
   height: 64px;
@@ -207,12 +238,21 @@ html {
   transform: scale(0.43);
   position: relative;
   left: -110px;
+  cursor: pointer;
+}
+@media screen and (max-width: 575px) {
+  .header .logo {
+    left: -5%;
+    transform: scale(0.75);
+  }
 }
 .header .user-sign-in-out {
   font-size: 16px;
   font-weight: 700;
   color: #2c3e50;
   margin-right: 30px;
+  width: 50%;
+  text-align: right;
 }
 .header .user-sign-in-out i {
   margin-right: 5px;
@@ -230,26 +270,53 @@ html {
   display: flex;
   justify-content: space-between;
 }
+@media screen and (max-width: 575px) {
+  .home-page .features {
+    flex-direction: column;
+  }
+}
 
 .sign-in-page {
   padding: 48px;
 }
 
-.user-page .welcome {
+.user-page {
+  padding-bottom: 5px;
+}
+.user-page .welcome-edit {
   text-align: center;
   padding: 22px 0 32px;
+  height: 185px;
 }
-.user-page .welcome h1 {
+@media screen and (max-width: 575px) {
+  .user-page .welcome-edit {
+    height: unset;
+  }
+}
+.user-page .welcome-edit h1 {
   font-size: 32px;
   font-weight: 700;
   color: white;
   margin-bottom: 22px;
 }
-.user-page .welcome span {
+.user-page .welcome-edit span {
   display: block;
 }
-.user-page .welcome .green-button {
+.user-page .welcome-edit .green-button {
   font-size: 13px;
+  width: 100px;
+  text-align: center;
+}
+.user-page .welcome-edit input, .user-page .welcome-edit .edit-button-wrapper .green-button {
+  margin: 5.5px;
+}
+.user-page .welcome-edit .edit-input-wrapper {
+  margin-top: -16px;
+}
+.user-page .welcome-edit input {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 12px;
 }
 .user-page .accounts {
   width: 80%;

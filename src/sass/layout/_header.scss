@@ -9,6 +9,12 @@
         transform: scale(0.43);
         position: relative;
         left: -110px;
+        cursor: pointer;
+
+        @include phone-portrait {
+            left: -5%;
+            transform: scale(0.75);
+        }
     }
 
     & .user-sign-in-out {
@@ -16,19 +22,16 @@
         font-weight: 700;
         color: #2c3e50;
         margin-right: 30px;
+        width: 50%;
+        text-align: right;
 
         & i {
             margin-right: 5px;
         }
+
+        @include phone-portrait {
+
+        }
     }
-
-    @include tablet {
-        
-    }
-
-    @include smartphone {
-
-    }
-
 
 }

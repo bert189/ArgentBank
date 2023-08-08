@@ -1,9 +1,16 @@
 
-.user-page {    
+.user-page {
+    
+    padding-bottom: 5px;
 
-    & .welcome {
+    & .welcome-edit {
         text-align: center;
         padding: $user-page-small-spacing 0 $user-page-medium-spacing;
+        height: 185px;
+
+        @include phone-portrait {
+            height: unset;
+        }
         
         & h1 {            
             font-size: 32px;
@@ -18,7 +25,25 @@
 
         & .green-button {
             font-size: 13px;
+            width: 100px;
+            text-align: center;
         }
+
+        & input, & .edit-button-wrapper .green-button {
+            margin: calc( $user-page-small-spacing / 4 );
+        }
+
+        & .edit-input-wrapper {
+            margin-top: calc( 0px - $user-page-medium-spacing / 2 );
+        }
+        
+        & input {
+            font-size: 15px;
+            font-weight: 700;
+            padding: 10px 12px;
+        }
+
+
     }
 
     & .accounts {
