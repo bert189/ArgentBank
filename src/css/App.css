@@ -66,11 +66,33 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.user-sign-in-out .sign-in {
-  cursor: pointer;
+.user-sign-in-out {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-right: 16px;
+  width: 60%;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
-.user-sign-in-out .sign-out {
+.user-sign-in-out i {
+  margin-right: 5px;
+}
+@media screen and (max-width: 575px) {
+  .user-sign-in-out {
+    flex-direction: column;
+  }
+}
+.user-sign-in-out .sign-in, .user-sign-in-out .sign-out {
+  margin-right: 10px;
+}
+.user-sign-in-out .sign-in a, .user-sign-in-out .sign-out a {
+  padding: 4px;
+}
+.user-sign-in-out .sign-in a:hover, .user-sign-in-out .sign-out a:hover {
   cursor: pointer;
+  opacity: 0.85;
 }
 
 .sign-in-form {
@@ -268,21 +290,7 @@ html {
   cursor: pointer;
   opacity: 0.8;
 }
-.header .user-sign-in-out {
-  font-size: 16px;
-  font-weight: 700;
-  color: #2c3e50;
-  margin-right: 30px;
-  width: 50%;
-  text-align: right;
-}
-.header .user-sign-in-out i {
-  margin-right: 5px;
-}
-.header .user-sign-in-out:hover {
-  cursor: pointer;
-  opacity: 0.9;
-}
+
 .footer {
   height: 76px;
   text-align: center;
@@ -312,19 +320,17 @@ html {
 }
 .user-page .welcome-edit {
   text-align: center;
-  padding: 22px 0 32px;
-  height: 185px;
-}
-@media screen and (max-width: 575px) {
-  .user-page .welcome-edit {
-    height: unset;
-  }
+  padding: 22px 0;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .user-page .welcome-edit h1 {
   font-size: 32px;
   font-weight: 700;
   color: white;
-  margin-bottom: 22px;
 }
 .user-page .welcome-edit span {
   display: block;
@@ -333,17 +339,27 @@ html {
   font-size: 13px;
   width: 100px;
   text-align: center;
+  margin: 7.5px;
 }
-.user-page .welcome-edit input, .user-page .welcome-edit .edit-button-wrapper .green-button {
+.user-page .welcome-edit .error-names {
+  height: 15px;
+  color: red;
+  font-size: 11px;
+  font-weight: 700;
+}
+.user-page .welcome-edit input {
   margin: 5.5px;
-}
-.user-page .welcome-edit .edit-input-wrapper {
-  margin-top: -16px;
 }
 .user-page .welcome-edit input {
   font-size: 15px;
   font-weight: 700;
   padding: 10px 12px;
+  outline: none;
+  border: 2px solid #12002b;
+  border-radius: 3px;
+}
+.user-page .welcome-edit input.name-input-error {
+  border: 2px solid red;
 }
 .user-page .accounts {
   width: 80%;

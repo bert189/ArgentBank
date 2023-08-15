@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GreenButton from './GreenButton'
 import { getUserProfile, userLogToken } from '../api/argentBank.api';
-import { setRememberMe, setToken } from '../store/connexionSlice';
+import { setRememberMe, setSignedIn, setToken } from '../store/connexionSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserProfile } from '../store/userProfileSlice';
 
@@ -46,9 +46,10 @@ function SignInForm() {
             const {token, error} = await userLogToken(email, password);
             
             if (token) {
-                // mettre à jour le state.token
+                // mettre à jour le state.token state.signedIn
                 dispatch(setToken(token))
-
+                dispatch(setSignedIn(true))
+                
                 // récupérer le profil utilisateur (prénom + nom) et mettre à jour le store
                 const {firstName, lastName} = await getUserProfile(token);
                 dispatch(setUserProfile({ firstName, lastName }))

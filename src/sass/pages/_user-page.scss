@@ -5,18 +5,17 @@
 
     & .welcome-edit {
         text-align: center;
-        padding: $user-page-small-spacing 0 $user-page-medium-spacing;
-        height: 185px;
-
-        @include phone-portrait {
-            height: unset;
-        }
+        padding: $user-page-small-spacing 0;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         
         & h1 {            
             font-size: 32px;
             font-weight: 700;
-            color: white;
-            margin-bottom: $user-page-small-spacing;
+            color: white;            
         }
 
         & span {
@@ -27,23 +26,32 @@
             font-size: 13px;
             width: 100px;
             text-align: center;
+            margin: calc(2px + $user-page-small-spacing / 4 );
         }
 
-        & input, & .edit-button-wrapper .green-button {
+        & .error-names {
+            height: 15px;
+            color: red;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        & input {
             margin: calc( $user-page-small-spacing / 4 );
-        }
-
-        & .edit-input-wrapper {
-            margin-top: calc( 0px - $user-page-medium-spacing / 2 );
         }
         
         & input {
             font-size: 15px;
             font-weight: 700;
             padding: 10px 12px;
+            outline: none;
+            border: 2px solid $background-indigo;
+            border-radius: 3px;
+
+            &.name-input-error {
+                border: 2px solid red;
+            }
         }
-
-
     }
 
     & .accounts {

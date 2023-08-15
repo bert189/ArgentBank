@@ -19,23 +19,6 @@
         @include hover-opacity(0.8);
     }
 
-    & .user-sign-in-out {
-        font-size: 16px;
-        font-weight: 700;
-        color: #2c3e50;
-        margin-right: 30px;
-        width: 50%;
-        text-align: right;
 
-        & i {
-            margin-right: 5px;
-        }
-
-        @include hover-opacity(0.9);
-
-        @include phone-portrait {
-
-        }
-    }
 
 }

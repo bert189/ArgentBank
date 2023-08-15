@@ -1,38 +1,56 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { resetToken, setRememberMe, setSignedIn } from '../store/connexionSlice';
 
 
 function UserSignInOut() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const signedIn = useSelector((state) => state.connexion.token)
+    const signedIn = useSelector((state) => state.connexion.signedIn)
     const userFirstName = useSelector((state) => state.userProfile.firstName)
 
     function handleSignInClick() {
-
+        navigate("/connexion");
     }
 
     function handleSignOutClick() {
-
+        dispatch(resetToken());
+        dispatch(setSignedIn(false));
+        dispatch(setRememberMe(false));
     }
 
 
     return (
         <div className='user-sign-in-out'>
-            <Link to="/connexion" onClick={handleSignInClick}>
+            <div>
                 <div className='sign-in'>
-                    <i className="fa-solid fa-circle-user"></i>
-                    { signedIn ? {userFirstName} : "Sign In" }
+                    { signedIn ?
+                        <div>
+                            <i className="fa-solid fa-circle-user"></i>
+                            {userFirstName}
+                        </div>
+                        :
+                        <Link to="/connexion" onClick={handleSignInClick} >
+                            <i className="fa-solid fa-circle-user"></i>
+                            Sign In
+                        </Link>
+                    }
                 </div>
-            </Link>
-            <Link to="/">
+            </div>
+            <div>
                 <div className='sign-out' onClick={handleSignOutClick}>
-                    { signedIn ? <i className="fa-solid fa-right-from-bracket"></i> : "" }
-                    { signedIn ? "Sign Out" : "" }
+                    { signedIn ?
+                        <Link to="/">
+                            <i className="fa-solid fa-right-from-bracket"></i>
+                            Sign Out
+                        </Link>
+                        :
+                        <></> }
                 </div>
-            </Link>
+            </div>
         </div>
     )
 }

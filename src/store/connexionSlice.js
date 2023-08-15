@@ -13,7 +13,8 @@ import { userLogToken } from "../api/argentBank.api";
 
 const initialState = {
     token : "",
-    rememberMe: false
+    signedIn: false,
+    rememberMe: false,
 }
 
 export const connexionSlice = createSlice({
@@ -22,6 +23,13 @@ export const connexionSlice = createSlice({
     reducers : {
         setToken: (state, action) => {
             state.token = action.payload;
+            console.log(action)
+        },
+        resetToken: (state) => {
+            state.token = "";
+        },
+        setSignedIn: (state, action) => {
+            state.signedIn = action.payload;
             console.log(action)
         },
         setRememberMe: (state, action) => {
@@ -38,6 +46,6 @@ export const connexionSlice = createSlice({
     // }
 });
 
-export const {setToken, setRememberMe} = connexionSlice.actions
+export const {setToken, resetToken, setSignedIn, setRememberMe} = connexionSlice.actions
 
 export default connexionSlice.reducer

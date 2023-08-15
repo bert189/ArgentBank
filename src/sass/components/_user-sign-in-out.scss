@@ -1,11 +1,31 @@
 
 .user-sign-in-out {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-right: 16px;
+    width: 60%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+
+    & i {
+        margin-right: 5px;
+    }
     
-    & .sign-in {
-        cursor: pointer;
+    @include phone-portrait {
+        flex-direction: column;
+    }    
+    
+    & .sign-in, & .sign-out {
+        margin-right: 10px;
+
+        & a {
+            padding: 4px;
+            @include hover-opacity(0.85);
+        }
+        
+        
     }
 
-    & .sign-out {
-        cursor: pointer;
-    }
 }
