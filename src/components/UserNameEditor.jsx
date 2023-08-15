@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 import GreenButton from './GreenButton'
 import { useDispatch, useSelector } from "react-redux";
-import { setUserProfile, resetUserProfile } from "../store/profileSlice";
+import { setUserProfile } from "../store/userProfileSlice";
 import { updateUserProfile } from '../api/argentBank.api';
 
 
 function UserNameEditor() {
 
-    // const dispatch = useDispatch;
+    const dispatch = useDispatch();
 
-    const user = useSelector((state) => state.profile)
+    const userFirstName = useSelector((state) => state.userProfile.firstName)
+    const userLastName = useSelector((state) => state.userProfile.lastName)
 
-    const [firstName, setFirstName] = useState(user.firstName); 
-    const [lastName, setLastName] = useState(user.lastName);
+    const [firstName, setFirstName] = useState(userFirstName); 
+    const [lastName, setLastName] = useState(userLastName);
 
-    // const { firstName, lastName } = useSelector((state) => state.profile))
-
-    const token = useSelector((state) => state.token)
+    const token = useSelector((state) => state.connexion.token)
 
     const [editorOpen, setEditorOpen] = useState(false);
 
@@ -40,7 +39,7 @@ function UserNameEditor() {
 
     function handleSaveClick() {
         // envoi des nom prénom vers le state
-        setUserProfile(firstName, lastName)
+        dispatch(setUserProfile({ firstName, lastName }))
         // envoi des nom prénom vers le serveur
         updateUserProfile(token, firstName, lastName)
         // ferme l'editeur

@@ -6,6 +6,9 @@
     font-weight: 700;
     font-size: 18px;
     padding: 8px 16px;
-    cursor: pointer;
     text-align: center;
+
+    @include hover-light-text(0.5) {
+        background-color: lighten($button-lightgreen, 2%);
+    }
 }

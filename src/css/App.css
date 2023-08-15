@@ -85,7 +85,7 @@ html {
 .sign-in-form h1 {
   font-size: 24px;
   font-weight: 700;
-  margin: 20px 0;
+  margin: 20px 0 10px;
 }
 .sign-in-form form {
   width: 100%;
@@ -98,13 +98,14 @@ html {
 .sign-in-form form .input-wrapper label {
   font-size: 16px;
   font-weight: 700;
+  margin-bottom: 2px;
 }
 .sign-in-form form .input-wrapper input {
-  padding: 5px;
-  font-size: 19px;
+  padding: 7px 9px;
+  font-size: 16px;
 }
 .sign-in-form form .input-remember {
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   padding: 4px;
   display: flex;
   align-items: center;
@@ -112,8 +113,21 @@ html {
 .sign-in-form form .input-remember label {
   margin-left: 8px;
 }
+.sign-in-form form .input-remember #remember-me {
+  accent-color: #2c3e50;
+}
 .sign-in-form form .green-button {
-  width: calc(100% - 32px - 4px);
+  width: 100%;
+}
+.sign-in-form form .errors {
+  height: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  color: red;
+}
+.sign-in-form form .input-error {
+  border: 2px solid red;
+  border-radius: 3px;
 }
 
 .hero {
@@ -199,8 +213,12 @@ html {
   font-weight: 700;
   font-size: 18px;
   padding: 8px 16px;
-  cursor: pointer;
   text-align: center;
+}
+.green-button:hover {
+  cursor: pointer;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+  background-color: #00c67d;
 }
 
 .account {
@@ -246,6 +264,10 @@ html {
     transform: scale(0.75);
   }
 }
+.header .logo:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 .header .user-sign-in-out {
   font-size: 16px;
   font-weight: 700;
@@ -257,12 +279,17 @@ html {
 .header .user-sign-in-out i {
   margin-right: 5px;
 }
+.header .user-sign-in-out:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
 .footer {
   height: 76px;
   text-align: center;
   padding: 32px 0 24px;
   border-top: 2px solid #ccc;
 }
+
 .home-page {
   background-color: white;
 }
@@ -321,6 +348,51 @@ html {
 .user-page .accounts {
   width: 80%;
   margin: 0 auto;
+}
+
+.not-found-page {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.not-found-page h1 {
+  font-weight: 700;
+  font-size: 290px;
+}
+@media screen and (max-width: 575px) {
+  .not-found-page h1 {
+    font-size: 96px;
+    margin-top: 4%;
+  }
+}
+.not-found-page h2 {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 110px;
+  text-align: center;
+}
+@media screen and (max-width: 575px) {
+  .not-found-page h2 {
+    font-size: 27px;
+    font-size: 16px;
+    margin-bottom: 8%;
+  }
+}
+.not-found-page .back-home {
+  font-size: 18px;
+  text-decoration: underline;
+  padding: 10px 0 40px;
+}
+@media screen and (max-width: 575px) {
+  .not-found-page .back-home {
+    font-size: 14px;
+  }
+}
+.not-found-page .back-home:hover {
+  cursor: pointer;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
 }
 
 /*# sourceMappingURL=App.css.map */

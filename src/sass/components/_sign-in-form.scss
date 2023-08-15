@@ -12,7 +12,7 @@
     & h1 {
         font-size: 24px;
         font-weight: 700;
-        margin: 20px 0;
+        margin: 20px 0 10px;
     }
 
     form {
@@ -26,17 +26,18 @@
             & label {
                 font-size: 16px;
                 font-weight: 700;
+                margin-bottom: 2px;
             }
 
             & input {
-                padding: 5px;
-                font-size: 19px;
+                padding: 7px 9px;
+                font-size: 16px;
             }
 
         }
 
         & .input-remember {
-            margin-bottom: 12px;
+            margin-bottom: 24px;
             padding: 4px;
             display: flex;
             align-items: center;
@@ -44,10 +45,28 @@
             & label {
                 margin-left: 8px;
             }
-        }
+
+            & #remember-me {
+                accent-color: $text-color-blue;
+            }
+
+        }       
+
 
         & .green-button {
-            width: calc(100% - $sign-in-form-padding - 2 * $button-border-size);
+            width: 100%;
+        }
+
+        & .errors {
+            height: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            color: red;
+        }
+
+        & .input-error {
+            border: 2px solid red;
+            border-radius: 3px;
         }
     }
 

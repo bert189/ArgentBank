@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import Account from '../components/Account'
 import UserNameEditor from '../components/UserNameEditor'
-// import { useParams } from 'react-router-dom';
 
 
 function UserPage() {
 
-    // const currentLocation = useParams();
-    // const userId = currentLocation.id;
 
     const accounts = [
         {

@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import connexionReducer from "./connexionSlice";
-import profileReducer from "./profileSlice";
+import userProfileReducer from "./userProfileSlice";
 
 export const store = configureStore({
     reducer : {
         connexion: connexionReducer,
-        profile: profileReducer
+        userProfile: userProfileReducer
     },
 })

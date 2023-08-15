@@ -8,22 +8,16 @@
     justify-content: center;
 }
 
-// points de suspension
-
-@mixin ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
 // MOUSE-OVERS
 
 // hover : cursor pointer + opacity + @content
 
-@mixin hover {
+@mixin hover-opacity($opacity) {
 
     &:hover {
         cursor: pointer;
+        opacity: $opacity;
         @content;   
     }
 }
@@ -41,30 +35,6 @@
 
 
 // BREAKPOINTS
-
-// breakpoint desktop
-
-@mixin desktop {
-    @media screen and (max-width: map.get($breakpoints, desktop)) {
-        @content;
-    }
-}
-
-// breakpoint tablet
-
-@mixin tablet {
-    @media screen and (max-width: map.get($breakpoints, tablet)) {
-        @content;
-    }
-} 
-
-// breakpoint smartphone
-
-@mixin smartphone {
-    @media screen and (max-width: map.get($breakpoints, smartphone)) {
-        @content;
-    }
-}
 
 // breakpont phone-portrait
 

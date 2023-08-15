@@ -15,6 +15,8 @@
             left: -5%;
             transform: scale(0.75);
         }
+
+        @include hover-opacity(0.8);
     }
 
     & .user-sign-in-out {
@@ -28,6 +30,8 @@
         & i {
             margin-right: 5px;
         }
+
+        @include hover-opacity(0.9);
 
         @include phone-portrait {
 
