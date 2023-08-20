@@ -66,7 +66,7 @@ export async function getUserProfile(token) {
 
 // modification de profil utilisateur (prénom + nom)
 
-export async function updateUserProfile(token, { firstName, lastName } ) {
+export async function updateUserProfile(token, firstName, lastName ) {
     try {
         await fetch(`${BASE_URL}/user/profile`, {
             method : "PUT",

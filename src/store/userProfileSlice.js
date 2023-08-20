@@ -13,7 +13,6 @@ export const userProfileSlice = createSlice({
             const {firstName, lastName} = action.payload;
             state.firstName = firstName;
             state.lastName = lastName;
-            console.log(action);
         },
         resetUserProfile : (state) => {
             state.firstName = "";

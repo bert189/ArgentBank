@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import GreenButton from './GreenButton'
 import { getUserProfile, userLogToken } from '../api/argentBank.api';
-import { setRememberMe, setSignedIn, setToken } from '../store/connexionSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { setToken, setSignedIn } from '../store/connexionSlice';
+import { useDispatch } from 'react-redux';
 import { setUserProfile } from '../store/userProfileSlice';
 
 function SignInForm() {
 
-    const rememberMe = useSelector((state) => state.connexion.rememberMe);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [formError, setFormError] = useState(null);
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [rememberMe, setRememberMe] = useState(false)
 
     // helper verification validité du format email
     function isValidEmail(email) {
@@ -28,8 +26,12 @@ function SignInForm() {
         setFormError(null); // Reinitialise l'erreur d'authentification
         setEmailError(false);
         setPasswordError(false);
-    }
+    }    
 
+    // traîtement de la checkbox "Remember me"
+    function handleCheckboxChange() {
+        setRememberMe(!rememberMe)
+    }
         
     // traitement du formulaire de connexion
     async function handleSubmit(event) {
@@ -45,17 +47,21 @@ function SignInForm() {
         try {
             const {token, error} = await userLogToken(email, password);
             
-            if (token) {
+            if (token) {               
                 // mettre à jour le state.token state.signedIn
                 dispatch(setToken(token))
                 dispatch(setSignedIn(true))
+
+                // si checkbox checked : conservation du state token nécéssaire pour reconnexion automatique
+                if (rememberMe) {
+                    // Sauvegarder le token dans le LocalStorage
+                    localStorage.setItem('token', token);
+                }
                 
                 // récupérer le profil utilisateur (prénom + nom) et mettre à jour le store
                 const {firstName, lastName} = await getUserProfile(token);
                 dispatch(setUserProfile({ firstName, lastName }))
                 
-                // Rediriger vers la page utilisateur
-                navigate("/user-page");
             }
             else if (error) {
                 // Gérer les erreurs d'authentification
@@ -73,15 +79,6 @@ function SignInForm() {
             console.log("unexpected problem, try again")
         }
     }
-
-
-    // traîtement de la checkbox "Remember me"
-
-    function handleCheckboxChange() {
-        dispatch(setRememberMe(!rememberMe)); 
-    }
-
-
     
 
     return (

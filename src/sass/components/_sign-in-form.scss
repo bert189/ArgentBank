@@ -8,6 +8,8 @@
     flex-direction: column;
     align-items: center;
     padding: $sign-in-form-padding;
+    position: relative;
+    top: 48px;
     
     & h1 {
         font-size: 24px;

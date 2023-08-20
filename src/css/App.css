@@ -86,6 +86,7 @@ html {
 }
 .user-sign-in-out .sign-in, .user-sign-in-out .sign-out {
   margin-right: 10px;
+  padding: 3px 0;
 }
 .user-sign-in-out .sign-in a, .user-sign-in-out .sign-out a {
   padding: 4px;
@@ -103,6 +104,8 @@ html {
   flex-direction: column;
   align-items: center;
   padding: 32px;
+  position: relative;
+  top: 48px;
 }
 .sign-in-form h1 {
   font-size: 24px;
@@ -275,10 +278,16 @@ html {
   align-items: center;
 }
 .header .logo {
-  transform: scale(0.43);
+  transform: scale(0.5);
   position: relative;
-  left: -110px;
+  left: -22%;
   cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+  .header .logo {
+    left: -12%;
+    transform: scale(0.65);
+  }
 }
 @media screen and (max-width: 575px) {
   .header .logo {
@@ -305,14 +314,10 @@ html {
   display: flex;
   justify-content: space-between;
 }
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 767px) {
   .home-page .features {
     flex-direction: column;
   }
-}
-
-.sign-in-page {
-  padding: 48px;
 }
 
 .user-page {

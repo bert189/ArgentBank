@@ -1,25 +1,23 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom'
-import { resetToken, setRememberMe, setSignedIn } from '../store/connexionSlice';
+import { Link } from 'react-router-dom'
+import { clearToken, setSignedIn } from '../store/connexionSlice';
+import { resetUserProfile } from '../store/userProfileSlice';
 
 
 function UserSignInOut() {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const signedIn = useSelector((state) => state.connexion.signedIn)
     const userFirstName = useSelector((state) => state.userProfile.firstName)
 
-    function handleSignInClick() {
-        navigate("/connexion");
-    }
 
     function handleSignOutClick() {
-        dispatch(resetToken());
+        dispatch(clearToken());
+        localStorage.removeItem('token'); // localStorage.clear();
         dispatch(setSignedIn(false));
-        dispatch(setRememberMe(false));
+        dispatch(resetUserProfile());
     }
 
 
@@ -28,12 +26,12 @@ function UserSignInOut() {
             <div>
                 <div className='sign-in'>
                     { signedIn ?
-                        <div>
+                        <Link to="/user-page">
                             <i className="fa-solid fa-circle-user"></i>
                             {userFirstName}
-                        </div>
+                        </Link>
                         :
-                        <Link to="/connexion" onClick={handleSignInClick} >
+                        <Link to="/user-page" >
                             <i className="fa-solid fa-circle-user"></i>
                             Sign In
                         </Link>

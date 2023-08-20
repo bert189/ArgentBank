@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GreenButton from './GreenButton'
 import { useDispatch, useSelector } from "react-redux";
 import { setUserProfile } from "../store/userProfileSlice";
@@ -9,11 +9,16 @@ function UserNameEditor() {
 
     const dispatch = useDispatch();
 
-    const userFirstName = useSelector((state) => state.userProfile.firstName)
-    const userLastName = useSelector((state) => state.userProfile.lastName)
+    const userProfile = useSelector(state => state.userProfile);
 
-    const [firstName, setFirstName] = useState(userFirstName); 
-    const [lastName, setLastName] = useState(userLastName);
+    const [firstName, setFirstName] = useState(''); 
+    const [lastName, setLastName] = useState('');
+
+    // Mettre à jour les états locaux lorsque les données de l'utilisateur changent
+    useEffect(() => {
+        setFirstName(userProfile.firstName);
+        setLastName(userProfile.lastName);
+    }, [userProfile.firstName, userProfile.lastName]);
     
     const [editorOpen, setEditorOpen] = useState(false);
     const [errorNames, setErrorNames] = useState(false);
@@ -23,7 +28,7 @@ function UserNameEditor() {
     const token = useSelector((state) => state.connexion.token) // nécesssaire pour l'update profile (PUT)
 
 
-    // update des states names au changement dasn les champs texte
+    // update des states names au changement dans les champs texte
     function handleFirstNameChange(event) {
         setFirstName(event.target.value);
     };
@@ -52,16 +57,25 @@ function UserNameEditor() {
     }
 
     // helper pour enlever les signaux d'erreur du formulaire en cas de focus sur un des champs
-    function handleInputFocus() {
-        setErrorNames(false);
-        setErrorFirstName(false);
-        setErrorLastName(false);
+    function handleInputFocus(event) {
+        if (event.target.name === "firstName") {
+            setErrorFirstName(false);
+        }
+        else if (event.target.name === "lastName") {
+            setErrorLastName(false);
+        }
     }
+
+    useEffect(() => { // permet d'attendre que les states locaux se mettent à jour avant de les utiliser
+        if (!errorFirstName && !errorLastName) {
+            setErrorNames(false);
+        }
+    }, [errorFirstName, errorLastName]);
 
     // CANCEL
     function handleCancelClick() {
-        setFirstName(userFirstName);
-        setLastName(userLastName);
+        setFirstName(userProfile.firstName);
+        setLastName(userProfile.lastName);
         setErrorNames(false);
         setErrorFirstName(false);
         setErrorLastName(false);
@@ -71,8 +85,23 @@ function UserNameEditor() {
 
     // SAVE
     function handleSaveClick() {
+
+        if ( firstName === userProfile.firstName && lastName === userProfile.lastName ) {
+            toggleEditor(); // évite un update API inutile
+        }
         
-        if ( testName(firstName) && testName(lastName) ) {
+        else if (!testName(firstName) && !testName(lastName)) {
+            setErrorFirstName(true);
+            setErrorLastName(true);
+        }
+        else if (!testName(firstName)) {
+            setErrorFirstName(true);
+        }
+        else if (!testName(lastName)) {
+            setErrorLastName(true);
+        }
+
+        else if ( testName(firstName) && testName(lastName) ) {
 
             // envoi des nom prénom vers le state
             dispatch(setUserProfile({ firstName, lastName }))
@@ -82,16 +111,7 @@ function UserNameEditor() {
 
             // ferme l'editeur
             toggleEditor();
-
         }
-
-        if(!testName(firstName)) {
-            setErrorFirstName(true);
-        }
-        if(!testName(lastName)) {
-            setErrorLastName(true);
-        }
-
     }
 
     
@@ -102,7 +122,7 @@ function UserNameEditor() {
                     <section className='welcome-edit'>
                         <h1>
                             Welcome back
-                            <span>{firstName}&nbsp;{lastName}&nbsp;!</span>
+                            <span>{userProfile.firstName}&nbsp;{userProfile.lastName}&nbsp;!</span>
                         </h1>
                         <GreenButton text="Edit Name" onClick={toggleEditor}/>
                     </section>
@@ -119,6 +139,7 @@ function UserNameEditor() {
                                 <input
                                     className={ errorFirstName ? "name-input-error" : "" }
                                     type="text"
+                                    name="firstName"
                                     value={firstName}
                                     onChange={handleFirstNameChange}
                                     onFocus={handleInputFocus}
@@ -126,6 +147,7 @@ function UserNameEditor() {
                                 <input
                                     className={ errorLastName ? "name-input-error" : "" } 
                                     type="text"
+                                    name="lastName"
                                     value={lastName}
                                     onChange={handleLastNameChange}
                                     onFocus={handleInputFocus}
@@ -136,8 +158,6 @@ function UserNameEditor() {
                                 <GreenButton text="Cancel" onClick={handleCancelClick} />
                             </div> 
                         </div>
-                                         
-
                     </section>
                 )
             }

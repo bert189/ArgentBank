@@ -38,6 +38,12 @@
 
 // breakpont phone-portrait
 
+@mixin smartphone {
+    @media screen and (max-width: map.get($breakpoints, smartphone)) {
+        @content;
+    }
+}
+
 @mixin phone-portrait {
     @media screen and (max-width: map.get($breakpoints, phone-portrait)) {
         @content;

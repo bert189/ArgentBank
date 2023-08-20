@@ -7,7 +7,7 @@
         display: flex;
         justify-content: space-between;
 
-        @include phone-portrait {
+        @include smartphone {
             flex-direction: column;
         }
     }

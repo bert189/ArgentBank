@@ -6,10 +6,15 @@
     align-items: center;
 
     & .logo {
-        transform: scale(0.43);
+        transform: scale(0.5);
         position: relative;
-        left: -110px;
+        left: -22%;
         cursor: pointer;
+
+        @include smartphone {
+            left: -12%;
+            transform: scale(0.65);
+        }
 
         @include phone-portrait {
             left: -5%;
