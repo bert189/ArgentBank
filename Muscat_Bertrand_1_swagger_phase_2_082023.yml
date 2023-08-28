@@ -1,0 +1,157 @@
+swagger: '2.0'
+info:
+  title: ArgentBank Transactions API documentation
+  description: Contains all available transaction API endpoints in this codebase
+  version: '1.0.0'
+  termsOfService: 'http://swagger.io/terms/'
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /user/{accountId}/transactions/{monthYear}:
+    parameters:
+    - name: accountId
+      in: path
+      required: true
+      type: string
+    - name: monthYear
+      in: path
+      required: true
+      type: string
+    - in: header
+      name: Authorization
+      type: string
+      description: Attach Bearer JWT token
+      required: true
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: All transactions
+      description: API for fetching all transactions of a specified month
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transctions retrieved successfully
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '401':
+          description: Unauthorized - Invalid or missing authentication
+        '403':
+          description: Forbidden - Insufficient permissions
+        '404':
+          description: Transactions not found
+        '500':
+          description: Internal Server Error
+  /user/{accountId}/{transactionDate}:
+    parameters:
+    - name: transactionDate
+      required: true
+      in: path
+      type: string
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: One Transaction data
+      description: API for fetching data for one specified transaction
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+        description: Attach Bearer JWT token
+        required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction Data retrieved successfully
+          schema:
+            $ref: '#/definitions/TransactionData'
+        '401':
+          description: Unauthorized - Invalid or missing authentication
+        '403':
+          description: Forbidden - Insufficient permissions
+        '404':
+          description: Transaction not found
+        '500':
+          description: Internal Server Error
+    patch:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: Update one Transaction
+      description: API for updating transaction data
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+        description: Attach Bearer JWT token
+        required: true
+      - in: body
+        name: body
+        description: Update transaction data attributes
+        required: true
+        schema:
+          $ref: '#/definitions/TransactionData'  
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction Data retrieved successfully
+          schema:
+            $ref: '#/definitions/TransactionData'
+        '400':
+          description: Invalid Fields
+        '401':
+          description: Unauthorized - Invalid or missing authentication
+        '403':
+          description: Forbidden - Insufficient permissions
+        '404':
+          description: Transaction not found
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  Transaction:
+    type: object
+    description: transaction
+    properties:
+      date:
+        type: string
+        description: date when transaction took place
+      description:
+        type: string
+        description: description of the transaction
+      amount:
+       type: string
+       description: amount of the transaction
+      balance:
+       type: string
+       description: balance after transacation
+  TransactionData:
+    type: object
+    description: transaction data
+    properties:
+      Type:
+        type: string
+        description: type of transaction
+      Category:
+        type: string
+        description: category of the transaction
+      Notes:
+        type: string
+        description: notes on the transaction

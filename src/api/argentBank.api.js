@@ -19,7 +19,6 @@ export async function userLogToken(email, password) {
             const data = await response.json();
             
             if (data.body && data.body.token) {
-                console.log("Token received:", data.body.token);
                 return {token: data.body.token};               
             }
             else {
